@@ -5,8 +5,12 @@
  */
 package Servlet;
 
+import Fungsi.function;
+import Tools.booking;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -83,7 +87,6 @@ public class Booking extends HttpServlet {
         String Cabang = request.getParameter("Cabang");
         String JenisKamar = request.getParameter("JenisKamar");
         String catatanCust = request.getParameter("catatanCust");
-        
         String[] a = checkinCust.split(" ");
         String[] b = checkoutCust.split(" ");
         int durasi =Math.abs(Integer.parseInt(a[0])- Integer.parseInt(b[0]));
@@ -99,6 +102,12 @@ public class Booking extends HttpServlet {
             harga = 1000000 * durasi;
         }
         System.out.println(a[0] + b[0] +durasi);
+        int max = 999;
+        int min = 100;
+        int idBookingRand = (int) (Math.random() * ((max - min) + 1)) + min;
+        int idCustomerRand = (int) (Math.random() * ((max - min) + 1)) + min;
+        int idKamarRand = (int) (Math.random() * ((max - min) + 1)) + min;
+        int virAccRand = (int) (Math.random() * ((max - min) + 1)) + min;
         
         out.print("<!DOCTYPE HTML>\n"
                 + "<html>\n"
@@ -316,6 +325,9 @@ public class Booking extends HttpServlet {
                 + "        <script src=\"js/main.js\"></script>\n"
                 + "    </body>\n"
                 + "</html>");
+
+        
+        
     }
 
     /**

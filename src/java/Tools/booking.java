@@ -17,11 +17,13 @@ public class booking {
     private String idCustomer;
     private String nama;
     private String telepon;
-    private Date tanggalMasuk;
-    private Date tanggalKeluar;
+    private String tanggalMasuk;
+    private String tanggalKeluar;
     private int jumlahTamu;
     private String idKamar;
     private String virtualAcc;
+    private String cabang;
+    private String tipeKamar;
 
     public String getIdBooking() {
         return idBooking;
@@ -55,19 +57,19 @@ public class booking {
         this.telepon = telepon;
     }
 
-    public Date getTanggalMasuk() {
+    public String getTanggalMasuk() {
         return tanggalMasuk;
     }
 
-    public void setTanggalMasuk(Date tanggalMasuk) {
+    public void setTanggalMasuk(String tanggalMasuk) {
         this.tanggalMasuk = tanggalMasuk;
     }
 
-    public Date getTanggalKeluar() {
+    public String getTanggalKeluar() {
         return tanggalKeluar;
     }
 
-    public void setTanggalKeluar(Date tanggalKeluar) {
+    public void setTanggalKeluar(String tanggalKeluar) {
         this.tanggalKeluar = tanggalKeluar;
     }
 
@@ -93,6 +95,22 @@ public class booking {
 
     public void setVirtualAcc(String virtualAcc) {
         this.virtualAcc = virtualAcc;
+    }
+
+    public String getCabang() {
+        return cabang;
+    }
+
+    public void setCabang(String cabang) {
+        this.cabang = cabang;
+    }
+
+    public String getTipeKamar() {
+        return tipeKamar;
+    }
+
+    public void setTipeKamar(String tipeKamar) {
+        this.tipeKamar = tipeKamar;
     }
 
 }

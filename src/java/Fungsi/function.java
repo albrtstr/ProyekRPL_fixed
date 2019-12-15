@@ -7,7 +7,10 @@ package Fungsi;
 
 import Tools.CostumerID;
 import Tools.booking;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jws.WebParam;
@@ -19,6 +22,7 @@ import javax.jws.WebParam;
 public class function {
 
     private DataBaseConnection conn;
+//    Connection con = conn.getConnection();
 
     public CostumerID profilCostumer(String username) {
 
@@ -63,10 +67,24 @@ public class function {
 
         try {
             conn = new DataBaseConnection();
-            String query = "INSERT INTO `booking`(`idBooking`, `idCustomer`, "
-                    + "`nama`, `telepon`, `tanggalMasuk`, `tanggalKeluar`, `jumlahTamu`, `idKamar`, `virtualAcc`) VALUES('" + booking.getIdBooking() + "',"
-                    + "'" + booking.getIdCustomer() + "','" + booking.getNama() + "','" + booking.getTelepon() + "','" + booking.getTanggalMasuk()
-                    + "','" + booking.getTanggalKeluar() + "','" + booking.getJumlahTamu() + "','" + booking.getIdKamar() + "','" + booking.getVirtualAcc() + "')";
+//            Connection con = conn.getConnection();
+//            PreparedStatement state = con.prepareStatement("insert into booking values(?,?,?,?,?,?,?,?,?)");
+//            state.setString(1, booking.getIdBooking());
+//            state.setString(2, booking.getIdCustomer());
+//            state.setString(3, booking.getNama());
+//            state.setString(4, booking.getTelepon());
+//            state.setString(5,  booking.getTanggalMasuk());
+//            state.setString(6, booking.getTanggalKeluar());
+//            state.setString(7, (Integer.toString(booking.getJumlahTamu())));
+//            state.setString(8, booking.getIdKamar());
+//            state.setString(9, booking.getVirtualAcc());
+//            state.executeUpdate();
+//            state.close();
+            String query = "INSERT INTO `booking`(`idBooking`, `idCustomer`, `nama`, `telepon`, `tanggalMasuk`, `tanggalKeluar`, `jumlahTamu`, `virtualAcc`, `cabang`, `tipeKamar`) "
+                    + "VALUES ('" + booking.getIdBooking() + "','" + booking.getIdCustomer() + "','" + booking.getNama() + "','" + booking.getTelepon() + "','" + booking.getTanggalMasuk()
+                    + "','" + booking.getTanggalKeluar() + "','" + booking.getJumlahTamu() + "','" + booking.getVirtualAcc() + "','" +booking.getCabang()+ "','"+booking.getTipeKamar()+"')";
+            
+            
             java.sql.Statement statement = conn.getConnection().createStatement();
             statement.executeUpdate(query);
         } catch (SQLException ex) {
