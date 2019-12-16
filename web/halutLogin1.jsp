@@ -31,7 +31,7 @@
     <header class="site-header js-site-header">
       <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="halutLogin.html">Aria Room & Swimming Pool</a></div>
+            <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="halutLogin1.jsp">Aria Room & Swimming Pool</a></div>
           <div class="col-6 col-lg-8">
 
 
@@ -116,7 +116,7 @@
         </div>
         <div class="row">
           <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="#" class="room">
+            <a href="./booking.html" class="room">
               <figure class="img-wrap">
                 <img src="images/img_1.jpg" alt="Free website template" class="img-fluid mb-3">
               </figure>
@@ -128,7 +128,7 @@
           </div>
 
           <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="#" class="room">
+            <a href="./booking.html" class="room">
               <figure class="img-wrap">
                 <img src="images/img_2.jpg" alt="Free website template" class="img-fluid mb-3">
               </figure>
@@ -140,7 +140,7 @@
           </div>
 
           <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="#" class="room">
+            <a href="./booking.html" class="room">
               <figure class="img-wrap">
                 <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
               </figure>

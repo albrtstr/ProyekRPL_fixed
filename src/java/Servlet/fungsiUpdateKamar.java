@@ -10,9 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ASUS
+ * @author ROG
  */
-public class tambahKamar extends HttpServlet {
+public class fungsiUpdateKamar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +39,10 @@ public class tambahKamar extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet tambahKamar</title>");
+            out.println("<title>Servlet fungsiUpdateKamar</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet tambahKamar at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet fungsiUpdateKamar at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,30 +61,26 @@ public class tambahKamar extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-        DataBaseConnection conn = new DataBaseConnection();
-        Connection connect = conn.getConnection();
+        DataBaseConnection connect = new DataBaseConnection();
+        Connection conn = connect.getConnection();
         PrintWriter out = response.getWriter();
-
-        String id = request.getParameter("idKamar");
-        String tipe = request.getParameter("tipeKamar");
-        String harga = request.getParameter("hargaKamar");
-
-        System.out.println(id + tipe + harga);
-        String button = request.getParameter("button");
-
+        
+        String idKamar = request.getParameter("idProduk");
+        String tipeKamar = request.getParameter("tipeKamar");
+        String hargaKamar = request.getParameter("hargaKamar");
+        String jumlahKamar = request.getParameter("jumlahKamar");
+        
         try {
-            int max = 999;
-            int min = 100;
-
-            Statement statement = conn.getConnection().createStatement();
-            String query = "INSERT INTO `KAMAR`(`idKamar`, `tipeKamar`, `hargaKamar`) "
-                    + "VALUES ('" + id + "','" + tipe + "','" + harga + "')";
-            statement.executeUpdate(query);
+            PreparedStatement update = conn.prepareStatement("update kamar set tipeKamar=?, hargaKamar=?, jumlahKamar=? where idKamar=?");
+            update.setString(1, tipeKamar);
+            update.setString(2, hargaKamar);
+            update.setString(3, jumlahKamar);
+            update.setString(4, idKamar);
+            
+            update.executeUpdate();
             response.sendRedirect("showKamar1");
-            statement.close();
-
-        } catch (SQLException ex) {
-            System.out.println("Message: " + ex.getMessage());
+        } catch (SQLException ex){
+            out.println(ex.getMessage());
         }
     }
 

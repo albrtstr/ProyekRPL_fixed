@@ -74,7 +74,9 @@ public class showKamar1 extends HttpServlet {
             Statement statement = conn.getConnection().createStatement();
             ResultSet result = statement.executeQuery(querykamar);
             out.print("<html>");
+                   
             out.print("<body>");
+            out.print("<form method = 'GET'>");
             out.print("<center> <h1> KAMAR ARIA ROOM AND SWIMMING POOL </h1> <table border=3>");
             out.print("<tr>");
             out.print("<td>ID Kamar</td>");
@@ -83,17 +85,20 @@ public class showKamar1 extends HttpServlet {
             out.print("</tr>");
             while (result.next()) {
                 out.print("<tr>");
-                out.print("<td>" + result.getString(1) + "</td>");
+                String a =result.getString(1) ;
+                System.out.println(a);
+                out.print("<td>" + a+ "</td>");
                 out.print("<td>" + result.getString(2) + "</td>");
                 out.print("<td>" + result.getString(3) + "</td>");
-                out.print("<td><a href = 'updateKamar.java'>Update Kamar</a></td>");
-                out.print("<td><a href = 'hapusKamar.java'>Hapus Kamar</a></td>");
+                out.print("<td><input type = 'submit' value = 'update' formaction = 'updateKamar_'></td>");
+                out.print("<td><input type = 'submit' value = 'hapus' formaction = 'hapusKamar'></td>");
                 out.print("</tr>");
 
             }
             out.print("</table><br>");
-            out.print("<a href = 'admin.html'>Kembali</center>");
-            out.print("<a href = 'tambahKamar.java'>Tambah Kamar");
+            out.print("<a href = 'admin.jsp'>Kembali</center>");
+            out.print("<a href = 'tambahKamar.jsp'>Tambah Kamar");
+            out.print("</form>");
             out.print("</body>");
             out.print("</html>");
         } catch (SQLException e) {

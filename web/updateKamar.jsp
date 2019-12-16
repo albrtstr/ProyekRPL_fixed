@@ -1,6 +1,35 @@
-<!DOCTYPE HTML>
+<%-- 
+    Document   : updateKamar
+    Created on : Dec 16, 2019, 5:57:58 PM
+    Author     : ROG
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
+        <script type="text/javascript">
+            function notifDaftar() {
+                var id_kamar = document.forms["tambahKamar"]["idKamar"].value;
+                var tipe_kamar = document.forms["tambahKamar"]["tipeKamar"].value;
+                var harga_kamar = document.forms["tambahKamar"]["hargaKamar"].value;
+
+
+                if ((id_kamar && tipe_kamar && harga_kamar) === "") {
+                    alert("Data belum diisi dengan lengkap!");
+                    return false;
+                }
+                if ((id_kamar && tipe_kamar && harga_kamar) !== null) {
+                    alert("Kamar berhasil ditambahkan!");
+                }
+            }
+        </script>
+
+        <% String idKamar = request.getParameter("idKamar");%>
+        <% String tipeKamar = request.getParameter("tipeKamar");%>
+        <% String hargaKamar = request.getParameter("hargaKamar");%>
+        <% String jumlahKamar = request.getParameter("jumlahKamar");%>
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Aria Rooms and Swimming Pool</title>
@@ -29,7 +58,7 @@
         <header class="site-header js-site-header">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    <div class="col-6 col-lg-4 site-logo" data-aos="fade">Aria Rooms & Swimming Pool</div>
+                    <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.html">Aria Rooms & Swimming Pool</a></div>
                     <div class="col-6 col-lg-8">
 
 
@@ -39,25 +68,6 @@
                             <span></span>
                         </div>
                         <!-- END menu-toggle -->
-
-                        <div class="site-navbar js-site-navbar">
-                            <nav role="navigation">
-                                <div class="container">
-                                    <div class="row full-height align-items-center">
-                                        <div class="col-md-6 mx-auto">
-                                            <ul class="list-unstyled menu">
-                                                <li><a href="profil.html">Profil</a></li>
-                                                <li><a href="halut.html">Halaman Utama</a></li>
-                                                <li><a href="kamar.html">Kamar</a></li>                      
-                                                <li><a href="booking.html">Booking</a></li>
-                                                <li class="active"><a href="pembayaran.html">Pembayaran</a></li>
-                                                <li><a href="login.html">Logout</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -68,7 +78,7 @@
             <div class="container">
                 <div class="row site-hero-inner justify-content-center align-items-center">
                     <div class="col-md-10 text-center" data-aos="fade">
-                        <h1 class="heading mb-3">PEMBAYARAN</h1>
+                        <h1 class="heading mb-3">UPDATE DATA KAMAR</h1>
                         <ul class="custom-breadcrumbs mb-4">
                         </ul>
                     </div>
@@ -87,39 +97,51 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
-                            
-                        <form action="#" method="post" class="bg-white p-md-5 p-4 mb-5 border">
+                        <form name="updateKamar" method="GET" action="fungsiUpdateKamar" class="bg-white p-md-5 p-4 mb-5 border">
                             <div class="row">
                                 <div class="col-md-6 form-group">
-                                    <label class="text-black font-weight-bold" for="name">Total Pembayaran</label>
-                                    <input type="text" id="totalBayar" name="bayarTotal" class="form-control ">
+                                    <label class="text-black font-weight-bold" for="id">ID KAMAR</label>
+                                    <input type="text" id="id" name="idKamar" class="form-control" value=<%=idKamar%>>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label class="text-black font-weight-bold" for="phone">Nomor Virtual Account</label>
-                                    <input type="text" id="noVircount" name="notualCount" class="form-control ">
+                                    <label class="text-black font-weight-bold" for="tipe">TIPE KAMAR</label>
+                                    <input type="text" id="tipe" name="tipeKamar" class="form-control" value=<%=tipeKamar%>>
                                 </div>
                             </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <button type="submit" value="OK" class="btn btn-primary text-white py-3 px-5 font-weight-bold"><a href="halutLogin1.jsp">OK</a></button>
-                                </div>
-                            </div>
-                        </form>
 
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label class="text-black font-weight-bold" for="harga">HARGA KAMAR</label>
+                                    <input type="text" id="harga" name="hargaKamar" class="form-control" value=<%=hargaKamar%>>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="text-black font-weight-bold" for="harga">JUMLAH KAMAR</label>
+                                    <input type="text" id="jumlah" name="jumlahKamar" class="form-control" value=<%=jumlahKamar%>>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <button onclick="return notifDaftar()" type="submit" value="Update" class="btn btn-primary text-white py-3 px-5 font-weight-bold" formaction="fungsiUpdateKamar">Update</button>
+                                </div>
+                            </div>
+                        </form> 
                     </div>
                     <div class="col-md-5" data-aos="fade-up" data-aos-delay="200">
                         <div class="row">
                             <div class="col-md-10 ml-auto contact-info">
                                 <p><span class="d-block">Alamat:</span> <span class="text-black"> Jalan Stadion Nomor 331, Tajem, Maguwoharjo, Depok, Sleman, Yogyakarta</span></p>
-                                <p><span class="d-block">Nomor Telepon:</span> <span class="text-black"> (0274) 433 2059</span></p>
+                                <p><span class="d-block">Phone:</span> <span class="text-black"> (0274) 433 2059</span></p>
                                 <p><span class="d-block">Email:</span> <span class="text-black"> ariarooms@gmail.com</span></p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
+
+
 
         <section class="section bg-image overlay" style="background-image: url('images/hero_4.jpg');">
             <div class="container" >
@@ -133,8 +155,6 @@
                 </div>
             </div>
         </section>
-
-
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/jquery-migrate-3.0.1.min.js"></script>
         <script src="js/popper.min.js"></script>
@@ -142,15 +162,9 @@
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/jquery.stellar.min.js"></script>
         <script src="js/jquery.fancybox.min.js"></script>
-
-
         <script src="js/aos.js"></script>
-
         <script src="js/bootstrap-datepicker.js"></script> 
         <script src="js/jquery.timepicker.min.js"></script> 
-
-
-
         <script src="js/main.js"></script>
     </body>
 </html>

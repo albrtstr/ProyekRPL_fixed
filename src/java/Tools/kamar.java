@@ -9,7 +9,7 @@ package Tools;
  *
  * @author ROG
  */
-class kamar {
+public class kamar {
     private String idKamar;
     private String tipeKamar;
     private int hargaKamar;

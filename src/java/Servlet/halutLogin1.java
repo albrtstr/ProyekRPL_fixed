@@ -61,7 +61,7 @@ public class halutLogin1 extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        HttpSession ses = request.getSession(false);
+        HttpSession ses = request.getSession();
         String nama = (String) ses.getAttribute("nama");
 
         out.println("<!halaman awal banget selamat datang>\n"
@@ -97,7 +97,7 @@ public class halutLogin1 extends HttpServlet {
                 + "    <header class=\"site-header js-site-header\">\n"
                 + "      <div class=\"container-fluid\">\n"
                 + "        <div class=\"row align-items-center\">\n"
-                + "            <div class=\"col-6 col-lg-4 site-logo\" data-aos=\"fade\"><a href=\"halutLogin.html.html\">Aria Room & Swimming Pool</a></div>\n"
+                + "            <div class=\"col-6 col-lg-4 site-logo\" data-aos=\"fade\"><a href=\"halutLogin1.jsp\">Aria Room & Swimming Pool</a></div>\n"
                 + "          <div class=\"col-6 col-lg-8\">\n"
                 + "\n"
                 + "\n"
@@ -115,7 +115,7 @@ public class halutLogin1 extends HttpServlet {
                 + "                    <div class=\"col-md-6 mx-auto\">\n"
                 + "                      <ul class=\"list-unstyled menu\">\n"
                 + "                        <li><a href=\"profil.html\">Profil</a></li>\n"
-                + "                        <li class=\"active\"><a href=\"halutLogin.html.html\">Halaman Utama</a></li>\n"
+                + "                        <li class=\"active\"><a href=\"halutLogin1.jsp\">Halaman Utama</a></li>\n"
                 + "                        <li><a href=\"kamar.html\">Kamar</a></li>\n"
                 + "                        <li><a href=\"booking.html\">Booking</a></li>\n"
                 + "                        <li><a href=\"pembayaran.html\">Pembayaran</a></li>\n"
@@ -138,7 +138,7 @@ public class halutLogin1 extends HttpServlet {
                 + "          <div class=\"col-md-10 text-center\" data-aos=\"fade-up\">\n"
                 + "            <span class=\"custom-caption text-uppercase text-white d-block  mb-3\">Welcome To Aria Room & Swimming Pool </span>\n"
                 + "            <h1 class=\"heading\">Selamat Datang</h1>\n"
-                + "            <br><h1 class=\"heading-serif\">" + nama + "</h1></br>"
+                + "            <br><h1 class=\"heading\">" + nama.toUpperCase() + "</h1></br>"
                 + "          </div>\n"
                 + "        </div>\n"
                 + "      </div>\n"
@@ -270,7 +270,7 @@ public class halutLogin1 extends HttpServlet {
                 + "              <h2 class=\"text-white font-weight-bold\">A Best Place To Stay. Reserve Now!</h2>\n"
                 + "            </div>\n"
                 + "            <div class=\"col-12 col-md-6 text-center text-md-right\" data-aos=\"fade-up\" data-aos-delay=\"200\">\n"
-                + "              <a href=\"booking.html\" class=\"btn btn-outline-white-primary py-3 text-white px-5\">Reserve Now</a>\n"
+                + "              <a href=\"booking.jsp\" class=\"btn btn-outline-white-primary py-3 text-white px-5\">Reserve Now</a>\n"
                 + "            </div>\n"
                 + "          </div>\n"
                 + "        </div>\n"

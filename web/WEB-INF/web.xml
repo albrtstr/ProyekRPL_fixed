@@ -13,8 +13,8 @@
         <servlet-class>Servlet.login</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>halutLogin</servlet-name>
-        <servlet-class>Servlet.halutLogin</servlet-class>
+        <servlet-name>halutLogin1</servlet-name>
+        <servlet-class>Servlet.halutLogin1</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Booking</servlet-name>
@@ -27,6 +27,22 @@
     <servlet>
         <servlet-name>Pembayaran</servlet-name>
         <servlet-class>Servlet.Pembayaran</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <servlet-class>Servlet.admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>bookingS</servlet-name>
+        <servlet-class>Servlet.bookingS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateKamar_</servlet-name>
+        <servlet-class>Servlet.updateKamar_</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>fungsiUpdateKamar</servlet-name>
+        <servlet-class>Servlet.fungsiUpdateKamar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addUser</servlet-name>
@@ -41,8 +57,8 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>halutLogin</servlet-name>
-        <url-pattern>/halutLogin</url-pattern>
+        <servlet-name>halutLogin1</servlet-name>
+        <url-pattern>/halutLogin1</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Booking</servlet-name>
@@ -55,6 +71,22 @@
     <servlet-mapping>
         <servlet-name>Pembayaran</servlet-name>
         <url-pattern>/Pembayaran</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>bookingS</servlet-name>
+        <url-pattern>/bookingS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateKamar_</servlet-name>
+        <url-pattern>/updateKamar_</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fungsiUpdateKamar</servlet-name>
+        <url-pattern>/fungsiUpdateKamar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,6 +5,7 @@
  */
 package Fungsi;
 
+import Tools.AdminID;
 import Tools.CostumerID;
 import Tools.booking;
 import java.sql.Connection;
@@ -48,8 +49,28 @@ public class function {
         return null;
     }
 
-    public boolean cekCostumer(String username, String password) {
+    public AdminID profilAdmin(String username) {
+        try {
+            conn = new DataBaseConnection();
+            String query = "SELECT * FROM ADMIN WHERE username LIKE '" + username + "'";
+            java.sql.Statement statement = conn.getConnection().createStatement();
+            java.sql.ResultSet result = statement.executeQuery(query);
+            result.next();
+            if (result.first()) {
+                AdminID p = new AdminID();
+                p.setIdAdmin(result.getString("idAdmin"));
+                p.setUsername(result.getString("username"));
+                p.setPassword(result.getString("password"));
+                p.setNama(result.getString("nama"));
+                return p;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(function.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
+    public boolean cekCostumer(String username, String password) {
         try {
             conn = new DataBaseConnection();
             String query = "SELECT * FROM `customer` WHERE username like '" + username + "' AND password like '" + password + "'";
@@ -78,4 +99,31 @@ public class function {
         }
 
     }
+    
+    public int cekJumlahKamar(String tipe) {
+
+        try {
+            conn = new DataBaseConnection();
+            String query = "SELECT jumlahKamar FROM `kamar` WHERE tipeKamar LIKE '"+tipe+"'";
+            java.sql.Statement statement = conn.getConnection().createStatement();
+            java.sql.ResultSet result = statement.executeQuery(query);
+            result.next();
+            return result.getInt("jumlahKamar");
+        } catch (SQLException ex) {
+            Logger.getLogger(function.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 1;
+    }
+    
+    public void ubahJumlahKamar(int cekCostumer, String tipe) {
+        try {
+            conn = new DataBaseConnection();
+            String sql = "UPDATE `kamar` SET `jumlahKamar`= '"+(cekCostumer-1)+"' WHERE tipeKamar LIKE '"+tipe+"'";
+            java.sql.Statement stat = conn.getConnection().createStatement();
+            stat.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(function.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

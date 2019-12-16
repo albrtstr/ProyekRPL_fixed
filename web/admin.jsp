@@ -1,9 +1,11 @@
+<%-- 
+    Document   : admin
+    Created on : Dec 16, 2019, 11:59:03 AM
+    Author     : ROG
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--halaman admin
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
 
@@ -72,16 +74,15 @@ and open the template in the editor.
                     <div class="block-32" data-aos="fade-up" data-aos-offset="-200">
                         <form>
                             <div class="row">
-                                <div class="col-md-6 col-lg-3 align-self-end">
-                                    <a class="button" href="showKamar">Kelola kamar</a>
-                                    
+                                <div class="col-md-12 col-lg-3 align-self-end">
                                 </div>
-                                <div class="col-md-6 col-lg-3 align-self-end">
-                                     <a class="button" href="showUser">Kelola Akun</a>
+                                <div class="col-md-12 col-lg-3 align-self-end">
+                                    <a class="button" href="showKamar1">Kelola kamar</a>
+
                                 </div>
-                                <div class="col-md-6 col-lg-3 align-self-end">
-                                     <a class="button" href="transaksi">Transaksi</a>
-                                </div>                                
+                                <div class="col-md-12 col-lg-3 align-self-end">
+                                    <a class="button" href="showUser">Kelola Akun</a>
+                                </div>                               
                             </div>
                         </form>
                     </div>
@@ -101,3 +102,4 @@ and open the template in the editor.
         <script src="js/main.js"></script>
     </body>
 </html>
+

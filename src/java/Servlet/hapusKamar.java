@@ -61,7 +61,7 @@ public class hapusKamar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+   
         System.out.println("ad");
         response.setContentType("text/html");
         DataBaseConnection conn = new DataBaseConnection();
@@ -71,10 +71,10 @@ public class hapusKamar extends HttpServlet {
         System.out.println(id);
 
         try {
-            String query = "delete from kamar where idKamar= " + id + "";
+            String query = "delete from KAMAR where idKamar= " + id + "";
             Statement statement = conn.getConnection().createStatement();
             int delete = statement.executeUpdate(query);
-            response.sendRedirect("showKamar");
+            response.sendRedirect("showKamar1");
         } catch (Exception ex) {
             out.println("message: " + ex.getMessage());
         }

@@ -91,17 +91,25 @@ public class Booking extends HttpServlet {
         String[] b = checkoutCust.split(" ");
         int durasi =Math.abs(Integer.parseInt(a[0])- Integer.parseInt(b[0]));
         int harga = 0;
+        int Total = 0;
 
         if (JenisKamar.equalsIgnoreCase("Single Room")) {
-            harga = 500000 * durasi;
+            harga = 500000;
+            Total = harga * durasi;
         }
         else if (JenisKamar.equalsIgnoreCase("Family Room")){
-            harga = 750000 * durasi;
+            harga = 750000;
+            Total= harga * durasi;
         }
         else if (JenisKamar.equalsIgnoreCase("Presidential Room")){
-            harga = 1000000 * durasi;
+            harga = 1000000;
+            Total = harga * durasi;
         }
         System.out.println(a[0] + b[0] +durasi);
+        String rincian = "Harga kamar : Rp." + Integer.toString(harga) + "\n"
+                + "Durasi Menginap : "+Integer.toString(durasi) + " Hari" +"\n"
+                +"Jumlah Tamu : "+ jumlahTamu + "\n";
+        String hargaTotal = "Rp." + Integer.toString(Total);
         int max = 999;
         int min = 100;
         int idBookingRand = (int) (Math.random() * ((max - min) + 1)) + min;
@@ -265,7 +273,13 @@ public class Booking extends HttpServlet {
                 + "                            <div class=\"row\">\n"
                 + "                                <div class=\"col-md-12 form-group\">\n"
                 + "                                    <label class=\"text-black font-weight-bold\" for=\"message\">Rincian Biaya</label>\n"
-                + "                                    <input type=\"text\" id=\"rincian\" name=\"rincianCust\" class=\"form-control\" value=\'" + harga + "\' readonly>\n"
+                + "                                    <textarea name=\"rincianCust\" id=\"message\" class=\"form-control \" cols=\"30\" rows=\"8\" readonly>" + rincian + "</textarea>\n"
+                + "                                </div>\n"
+                + "                            </div>\n"
+                + "                            <div class=\"row\">\n"
+                + "                                <div class=\"col-md-12 form-group\">\n"
+                + "                                    <label for=\"adults\" class=\"font-weight-bold text-black\">Total Harga</label>\n"
+                + "                                    <input type=\"text\" id=\"hargaTotal\" name=\"hargaTotal\" class=\"form-control\" value=\'" + hargaTotal + "\' readonly>\n"
                 + "                                </div>\n"
                 + "                            </div>\n"
                 + "                            <div class=\"row\">\n"

@@ -8,6 +8,7 @@ package Servlet;
 import Fungsi.DataBaseConnection;
 import Fungsi.LoginFunction;
 import Fungsi.function;
+import Tools.AdminID;
 import Tools.CostumerID;
 import Tools.CustomerLogin;
 import java.io.IOException;
@@ -78,7 +79,7 @@ public class login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        HttpSession ses = request.getSession(false);
+        HttpSession ses = request.getSession();
         String nama = (String) ses.getAttribute("nama");
 
         out.println("<!halaman awal banget selamat datang>\n"
@@ -155,7 +156,7 @@ public class login extends HttpServlet {
                 + "          <div class=\"col-md-10 text-center\" data-aos=\"fade-up\">\n"
                 + "            <span class=\"custom-caption text-uppercase text-white d-block  mb-3\">Welcome To Aria Room & Swimming Pool </span>\n"
                 + "            <h1 class=\"heading\">Selamat Datang</h1>\n"
-                + "            <br><h1 class=\"heading-serif\">" + nama + "</h1></br>"
+                + "            <br><h1 class=\"heading\">" + nama.toUpperCase() + "</h1></br>"
                 + "          </div>\n"
                 + "        </div>\n"
                 + "      </div>\n"
@@ -199,7 +200,7 @@ public class login extends HttpServlet {
                 + "        </div>\n"
                 + "        <div class=\"row\">\n"
                 + "          <div class=\"col-md-6 col-lg-4\" data-aos=\"fade-up\">\n"
-                + "            <a href=\"#\" class=\"room\">\n"
+                + "            <a href=\"booking.html\" class=\"room\">\n"
                 + "              <figure class=\"img-wrap\">\n"
                 + "                <img src=\"images/img_1.jpg\" alt=\"Free website template\" class=\"img-fluid mb-3\">\n"
                 + "              </figure>\n"
@@ -211,7 +212,7 @@ public class login extends HttpServlet {
                 + "          </div>\n"
                 + "\n"
                 + "          <div class=\"col-md-6 col-lg-4\" data-aos=\"fade-up\">\n"
-                + "            <a href=\"#\" class=\"room\">\n"
+                + "            <a href=\"booking.html\" class=\"room\">\n"
                 + "              <figure class=\"img-wrap\">\n"
                 + "                <img src=\"images/img_2.jpg\" alt=\"Free website template\" class=\"img-fluid mb-3\">\n"
                 + "              </figure>\n"
@@ -223,7 +224,7 @@ public class login extends HttpServlet {
                 + "          </div>\n"
                 + "\n"
                 + "          <div class=\"col-md-6 col-lg-4\" data-aos=\"fade-up\">\n"
-                + "            <a href=\"#\" class=\"room\">\n"
+                + "            <a href=\"booking.html\" class=\"room\">\n"
                 + "              <figure class=\"img-wrap\">\n"
                 + "                <img src=\"images/img_3.jpg\" alt=\"Free website template\" class=\"img-fluid mb-3\">\n"
                 + "              </figure>\n"
@@ -382,6 +383,7 @@ public class login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         function f = new function();
+        
         if (f.cekCostumer(username, password)) {
             CostumerID c = f.profilCostumer(username);
             System.out.println(c.getIdCustomer());
@@ -392,8 +394,19 @@ public class login extends HttpServlet {
             session.setAttribute("idCostumer", c.getIdCustomer());
             session.setAttribute("telp", c.getNoTelp());
             session.setAttribute("alamatCos", c.getAlamat());
-            response.sendRedirect("login");
-        } else {
+            response.sendRedirect("halutLogin1");
+            
+        }else if (!f.cekCostumer(username, password)) {
+            AdminID c = f.profilAdmin(username);
+            System.out.println(c.getIdAdmin());
+            HttpSession session = request.getSession(false);
+            session.setAttribute("username", c.getUsername());
+            session.setAttribute("nama", c.getNama());
+            session.setAttribute("password", c.getPassword());
+            session.setAttribute("idAdmin", c.getIdAdmin());
+            response.sendRedirect("admin.jsp");
+            
+        }else {
             out.println("<html>");
             out.println("<script>");
             out.println("alert(\"Login Gagal\")");

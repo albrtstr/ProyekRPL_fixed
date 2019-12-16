@@ -14,7 +14,7 @@ and open the template in the editor.
                 if ((ganalar && ganala1) === "") {
                     alert("Data belum diisi!");
                     return false;
-                }
+}
             }
         </script>
         <meta charset="UTF-8">
@@ -36,36 +36,7 @@ and open the template in the editor.
         <!-- Theme Style -->
         <link rel="stylesheet" href="css/style.css">
     </head>
-
-    <body>
-        <header class="site-header js-site-header">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-6 col-lg-4 site-logo" data-aos="fade">Aria Room and Swimming Pool</div>
-                    <div class="col-6 col-lg-8">
-                        <div class="site-menu-toggle js-site-menu-toggle"  data-aos="fade">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <!-- END menu-toggle -->
-                        <div class="site-navbar js-site-navbar">
-                            <nav role="navigation">
-                                <div class="container">
-                                    <div class="row full-height align-items-center">
-                                        <div class="col-md-6 mx-auto">
-                                            <ul class="list-unstyled menu">
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- END head -->
+    <body>                  
         <section class="site-hero overlay" style="background-image: url(images/hero_4.jpg)" data-stellar-background-ratio="0.5">
             <div class="container">
                 <div class="row site-hero-inner justify-content-center align-items-center">
@@ -99,7 +70,6 @@ and open the template in the editor.
                                 </div>
                                 <div class="col-md-6 col-lg-3 align-self-end">
                                     <button onclick="return login()" type=submit value="LOGIN" class="btn btn-primary btn-block text-white" name="buttonLogin">LOGIN</button>
-
                                 </div>
                                 <div class="col-md-6 col-lg-3 align-self-end">
                                     <a href="registrasi.jsp" class="btn btn-primary btn-block text-white">DAFTAR</a>
