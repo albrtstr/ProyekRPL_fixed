@@ -48,12 +48,11 @@
                   <div class="row full-height align-items-center">
                     <div class="col-md-6 mx-auto">
                       <ul class="list-unstyled menu">
-                        <li><a href="profil.html">Profil</a></li>
-                        <li class="active"><a href="halutLogin.html">Halaman Utama</a></li>
+                        <li class="active"><a href="halutLogin1.html">Halaman Utama</a></li>
                         <li><a href="kamar.html">Kamar</a></li>
-                        <li><a href="booking.html">Booking</a></li>
+                        <li><a href="booking.jsp">Booking</a></li>
                         <li><a href="pembayaran.html">Pembayaran</a></li>
-                        <li><a href="login.jsp">Log Out</a></li>
+                        <li><a href="./logout">Log Out</a></li>
                       </ul>
                     </div>
                   </div>
@@ -98,8 +97,7 @@
           </div>
           <div class="col-md-12 col-lg-4 order-lg-1" data-aos="fade-up">
             <h2 class="heading">Welcome!</h2>
-            <p class="mb-4">Sebuah Guest House yang asri, dengan pepohonan yang rindang, suasana seperti di alam terbuka serta kolam renang yang tidak menggunakan kaporit</p>
-            <p><a href="#" class="btn btn-primary text-white py-2 mr-3">Learn More</a> <span class="mr-3 font-family-serif"><em>or</em></span> <a href="https://vimeo.com/channels/staffpicks/93951774"  data-fancybox class="text-uppercase letter-spacing-1">See video</a></p>
+            <p class="mb-4">Hunian dan tempat berlibur yang sangat nyaman. Terletak di pinggiran kota Yogyakarta, bebas dari kebisingan kota dan mudah dijangkau dari berbagai titik di Yogyakarta.</p>
           </div>
           
         </div>
@@ -110,13 +108,13 @@
       <div class="container">
         <div class="row justify-content-center text-center mb-5">
           <div class="col-md-7">
-            <h2 class="heading" data-aos="fade-up">Rooms &amp; Suites</h2>
-            <p data-aos="fade-up" data-aos-delay="100">dengan konsep kamar yang berbeda, terbuat dari kayu sehingga memiliki sensasi berbeda dan kelasik</p>
+            <h2 class="heading" data-aos="fade-up">Kamar</h2>
+            <p data-aos="fade-up" data-aos-delay="100">dengan konsep kamar yang berbeda, terbuat dari kayu sehingga memiliki sensasi berbeda dan klasik</p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="./booking.html" class="room">
+            <a href="./booking.jsp" class="room">
               <figure class="img-wrap">
                 <img src="images/img_1.jpg" alt="Free website template" class="img-fluid mb-3">
               </figure>
@@ -128,7 +126,7 @@
           </div>
 
           <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="./booking.html" class="room">
+            <a href="./booking.jsp" class="room">
               <figure class="img-wrap">
                 <img src="images/img_2.jpg" alt="Free website template" class="img-fluid mb-3">
               </figure>
@@ -140,7 +138,7 @@
           </div>
 
           <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="./booking.html" class="room">
+            <a href="./booking.jsp" class="room">
               <figure class="img-wrap">
                 <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
               </figure>
@@ -168,25 +166,16 @@
           <div class="col-md-12">
             <div class="home-slider major-caousel owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
               <div class="slider-item">
-                <a href="images/slider-1.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-1.jpg" alt="Image placeholder" class="img-fluid"></a>
+                <a href="images/lengkap.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-1.jpg" alt="Image placeholder" class="img-fluid"></a>
               </div>
               <div class="slider-item">
-                <a href="images/slider-2.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-2.jpg" alt="Image placeholder" class="img-fluid"></a>
+                <a href="images/living-room.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-2.jpg" alt="Image placeholder" class="img-fluid"></a>
               </div>
               <div class="slider-item">
-                <a href="images/slider-3.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-3.jpg" alt="Image placeholder" class="img-fluid"></a>
+                <a href="images/kamar.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-3.jpg" alt="Image placeholder" class="img-fluid"></a>
               </div>
               <div class="slider-item">
-                <a href="images/slider-4.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-4.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </div>
-              <div class="slider-item">
-                <a href="images/slider-5.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-5.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </div>
-              <div class="slider-item">
-                <a href="images/slider-6.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-6.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </div>
-              <div class="slider-item">
-                <a href="images/slider-7.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-7.jpg" alt="Image placeholder" class="img-fluid"></a>
+                <a href="images/dapur.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-4.jpg" alt="Image placeholder" class="img-fluid"></a>
               </div>
             </div>
             <!-- END slider -->
@@ -201,10 +190,10 @@
         <div class="container" >
           <div class="row align-items-center">
             <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
-              <h2 class="text-white font-weight-bold">A Best Place To Stay. Reserve Now!</h2>
+              <h2 class="text-white font-weight-bold">Tempat terbaik untuk menginap. Pesan Sekarang!</h2>
             </div>
             <div class="col-12 col-md-6 text-center text-md-right" data-aos="fade-up" data-aos-delay="200">
-              <a href="booking.html" class="btn btn-outline-white-primary py-3 text-white px-5">Reserve Now</a>
+              <a href="booking.jsp" class="btn btn-outline-white-primary py-3 text-white px-5">Pesan</a>
             </div>
           </div>
         </div>
@@ -214,27 +203,17 @@
       <div class="container">
         <div class="row mb-4">
           <div class="col-md-3 mb-5">
-            <ul class="list-unstyled link">
-              <li><a href="kamar.html">Rooms</a></li>
-            </ul>
+         
           </div>
-          <div class="col-md-3 mb-5">
-            <ul class="list-unstyled link">
-                <li><a href="kamar.html">The Rooms &amp; Suites</a></li>
-            </ul>
-          </div>
+        
           <div class="col-md-3 mb-5 pr-md-5 contact-info">
-            <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
+            
             <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span> <span> jalan stadion no 331 Tajem Maguwoharjo Yogyakarta <br> Jalan Tukad Badung no 331 Denpasar Bali</span></p>
             <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span> 08123456789 </span></p>
             <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span> Ariarooms@gmail.com</span></p>
           </div>
           <div class="col-md-3 mb-5">
-            <p>Sign up for our newsletter</p>
-            <form action="#" class="footer-newsletter">
-              <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email...">
-                <button type="submit" class="btn"><span class="fa fa-paper-plane"></span></button>
+              
               </div>
             </form>
           </div>

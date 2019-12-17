@@ -25,9 +25,9 @@
         <!-- Theme Style -->
         <link rel="stylesheet" href="css/style.css">
     </head>
-    
-    <% String jenisKamar = request.getParameter("JenisKamar"); %>
-    
+
+
+
     <script>
         function notifReserve() {
             var namaCust_ = document.forms["bookingForm"]["namaCust"].value;
@@ -46,17 +46,32 @@
             if ((namaCust_ && teleponCust_ && emailCust_ && checkinCust_ && checkoutCust_ && jumlahTamu_ && Cabang_ && JenisKamar_) !== null) {
                 return true;
             }
+
+        }
+
+        function jmlKamar() {
+
+        <% Tools.kamar kam = new Tools.kamar(); %>
+        <% Fungsi.function func = new Fungsi.function(); %>
+        <% kam.setTipeKamar(request.getParameter("JenisKamar")); %>
+        <% func.cekJumlahKamar(request.getParameter("JenisKamar")); %>
+
+        }
+
+        function ifJm() {
+            var jKamar = document.forms["bookingForm"]["JenisKamar"].value;
+
+            if (jKamar === "Single Room") {
+        <% Fungsi.function func1 = new Fungsi.function(); %>
+        <% kam.setTipeKamar(request.getParameter("JenisKamar")); %>
+        <% func.cekJumlahKamar(request.getParameter("JenisKamar"));%>
+            }
+        }
+        
+        function cekKamar(){
             
         }
         
-        function jmlKamar(){
-            var jenisKamar = <% request.getParameter("JenisKamar"); %>
-            <% Tools.kamar kam = new Tools.kamar(); %>
-            <% Fungsi.function func = new Fungsi.function(); %>
-            <% kam.setTipeKamar(jenisKamar); %>
-            <% func.cekJumlahKamar(jenisKamar); %>
-            
-        }
 
 
     </script>
@@ -176,16 +191,15 @@
                                     <label for="adults" class="font-weight-bold text-black">Jenis Kamar</label>
                                     <div class="field-icon-wrap"></div>
                                     <div class="icon"></div>
-                                    <select name="JenisKamar" id="Kamar" class="form-control">
+                                    <select name="JenisKamar" id="Kamar" class="form-control" onclick="return jmlKamar()">
                                         <option onclick="return jmlKamar()" value="Single Room">Single Room</option>
                                         <option onclick="return jmlKamar()" value="Family Room">Family Room</option>
                                         <option onclick="return jmlKamar()" value="Presidential Room">Presidential Room</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="jKamar" class="font-weight-bold text-black">Jumlah Tersedia</label>
-                                    <input type="text" id="jumlahKamar" nama="jumlahKamar" class="form-control" value=<%=func.cekJumlahKamar(jenisKamar)%> readonly>
-                                    
+                                    <p><p>
+                                    <button onclick="return cekKamar()" type="submit" value="cekKamar" class="btn btn-light text-black py-2 px-3 font-weight-light" formaction="bookingS" formmethod="GET">Cek Kamar</button>
                                 </div>
                             </div>
                             <div class="row">
@@ -206,6 +220,7 @@ Presidential Room = Rp 1.000.000,00 </textarea>
                                 <div class="col-md-6 form-group">
                                     <button onclick="return notifReserve()" type="submit" value="Reserve Now" class="btn btn-primary text-white py-3 px-5 font-weight-bold">Reserve Now</button>
                                 </div>
+
                             </div>
                         </form>
 

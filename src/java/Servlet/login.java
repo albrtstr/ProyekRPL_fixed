@@ -132,7 +132,6 @@ public class login extends HttpServlet {
                 + "                  <div class=\"row full-height align-items-center\">\n"
                 + "                    <div class=\"col-md-6 mx-auto\">\n"
                 + "                      <ul class=\"list-unstyled menu\">\n"
-                + "                        <li><a href=\"profil.html\">Profil</a></li>\n"
                 + "                        <li class=\"active\"><a href=\"halutLogin.html.html\">Halaman Utama</a></li>\n"
                 + "                        <li><a href=\"kamar.html\">Kamar</a></li>\n"
                 + "                        <li><a href=\"booking.html\">Booking</a></li>\n"

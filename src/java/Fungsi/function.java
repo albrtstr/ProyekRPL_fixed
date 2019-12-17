@@ -101,14 +101,15 @@ public class function {
     }
     
     public int cekJumlahKamar(String tipe) {
-
+        System.out.println(tipe);
         try {
             conn = new DataBaseConnection();
             String query = "SELECT jumlahKamar FROM `kamar` WHERE tipeKamar LIKE '"+tipe+"'";
             java.sql.Statement statement = conn.getConnection().createStatement();
             java.sql.ResultSet result = statement.executeQuery(query);
             result.next();
-            return result.getInt("jumlahKamar");
+            System.out.println(result.getInt(1));
+            return result.getInt(1);
         } catch (SQLException ex) {
             Logger.getLogger(function.class.getName()).log(Level.SEVERE, null, ex);
         }

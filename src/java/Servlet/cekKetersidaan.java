@@ -6,13 +6,11 @@
 package Servlet;
 
 import Fungsi.DataBaseConnection;
+import Fungsi.function;
+import Tools.kamar;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ASUS
  */
-public class tambahKamar extends HttpServlet {
+public class cekKetersidaan extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,18 +34,17 @@ public class tambahKamar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet tambahKamar</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet tambahKamar at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        DataBaseConnection conn = new DataBaseConnection();
+        Connection connect = conn.getConnection();
+        String jenisKamar = request.getParameter("JenisKamar");
+        PrintWriter out = response.getWriter();
+        
+        kamar kamar = new kamar();
+        function func = new function();
+        kamar.setTipeKamar(jenisKamar);
+        func.cekJumlahKamar(String.valueOf(jenisKamar));
+        int jml = func.cekJumlahKamar(String.valueOf(jenisKamar));;
+        System.out.println("Result "+jml);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,33 +59,7 @@ public class tambahKamar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
-        DataBaseConnection conn = new DataBaseConnection();
-        Connection connect = conn.getConnection();
-        PrintWriter out = response.getWriter();
-
-        String id = request.getParameter("idKamar");
-        String tipe = request.getParameter("tipeKamar");
-        String harga = request.getParameter("hargaKamar");
-        int jumlah = Integer.parseInt(request.getParameter("jumlahKamar"));
-
-        System.out.println(id + tipe + harga);
-        String button = request.getParameter("button");
-
-        try {
-            int max = 999;
-            int min = 100;
-            System.out.println(id + tipe + harga);
-            Statement statement = conn.getConnection().createStatement();
-            String query = "INSERT INTO `KAMAR`(`idKamar`, `tipeKamar`, `hargaKamar`, `jumlahKamar`) "
-                    + "VALUES ('" + id + "','" + tipe + "','" + harga + "','" + jumlah + "')";
-            statement.executeUpdate(query);
-            response.sendRedirect("showKamar1");
-            statement.close();
-
-        } catch (SQLException ex) {
-            System.out.println("Message: " + ex.getMessage());
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -102,7 +73,19 @@ public class tambahKamar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html");
+//        DataBaseConnection conn = new DataBaseConnection();
+//        Connection connect = conn.getConnection();
+//        String jenisKamar = request.getParameter("JenisKamar");
+//        PrintWriter out = response.getWriter();
+//        
+//        kamar kamar = new kamar();
+//        function func = new function();
+//        kamar.setTipeKamar(jenisKamar);
+//        func.cekJumlahKamar(jenisKamar);
+//        int jml = func.cekJumlahKamar(String.valueOf(jenisKamar));;
+//        System.out.println("Result :"+jml);
+        
     }
 
     /**

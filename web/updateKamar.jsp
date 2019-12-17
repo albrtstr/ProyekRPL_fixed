@@ -124,7 +124,7 @@
 
                             <div class="row">
                                 <div class="col-md-6 form-group">
-                                    <button onclick="return notifDaftar()" type="submit" value="Update" class="btn btn-primary text-white py-3 px-5 font-weight-bold" formaction="fungsiUpdateKamar">Update</button>
+                                    <button type="submit" value="Update" class="btn btn-primary text-white py-3 px-5 font-weight-bold">Update</button>
                                 </div>
                             </div>
                         </form> 

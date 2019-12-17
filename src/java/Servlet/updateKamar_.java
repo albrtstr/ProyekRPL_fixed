@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -61,31 +63,34 @@ public class updateKamar_ extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
-        DataBaseConnection connect = new DataBaseConnection();
-        Connection conn = connect.getConnection();
-        PrintWriter out = response.getWriter();
-        
-        String idKamar = request.getParameter("idProduk");
-        String tipeKamar = request.getParameter("tipeKamar");
-        String hargaKamar = request.getParameter("hargaKamar");
-        String jumlahKamar = request.getParameter("jumlahKamar");
-        
         try {
-            String querykamar = "select * from kamar";
-            Statement statement = connect.getConnection().createStatement();
+            response.setContentType("text/html");
+            DataBaseConnection connect = new DataBaseConnection();
+            DataBaseConnection conn = new DataBaseConnection();
+            PrintWriter out = response.getWriter();
+            
+            String kamarId = request.getParameter("idKamar");
+            String tipeKamar = request.getParameter("tipeKamar");
+            String hargaKamar = request.getParameter("hargaKamar");
+            String jumlahKamar = request.getParameter("jumlahKamar");
+            
+            System.out.println(kamarId);
+            
+            String querykamar = "select * from kamar where idKamar LIKE "+kamarId;
+             Statement statement = conn.getConnection().createStatement();
             ResultSet result = statement.executeQuery(querykamar);
             if (result.next()) {
-                idKamar = result.getString(1);
+                kamarId = result.getString(1);
                 tipeKamar = result.getString(2);
                 hargaKamar = result.getString(3);
                 jumlahKamar = result.getString(4);
-                response.sendRedirect("updateKamar.jsp?idKamar='" +idKamar+ "'&tipeKamar='" +tipeKamar+ "'&hargaKamar='" +hargaKamar+ "'&jumlahKamar='" +jumlahKamar+ "'");
+                response.sendRedirect("updateKamar.jsp?idKamar='" +kamarId+ "'&tipeKamar='" +tipeKamar+ "'&hargaKamar='" +hargaKamar+ "'&jumlahKamar='" +jumlahKamar+ "'");
                 
-            }
-        } catch (SQLException ex){
-            out.println("Message: "+ex.getMessage());
+            }   
+        } catch (SQLException ex) {
+            Logger.getLogger(updateKamar_.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
             
     }
 

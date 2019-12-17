@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Servlet;
 
 import Fungsi.DataBaseConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ASUS
  */
-@WebServlet(name = "showKamar1", urlPatterns = {"/showKamar1"})
-public class showKamar1 extends HttpServlet {
+@WebServlet(name = "update", urlPatterns = {"/update"})
+public class update extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +43,10 @@ public class showKamar1 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet showKamar1</title>");            
+            out.println("<title>Servlet update</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet showKamar1 at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet update at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,46 +64,25 @@ public class showKamar1 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         System.out.println("ad");
-        response.setContentType("text/html");
-        DataBaseConnection conn = new DataBaseConnection();
-//        Connection connect = conn.getConnection();
-        PrintWriter out = response.getWriter();
-        try {
-            String querykamar = "select * from kamar";
-            Statement statement = conn.getConnection().createStatement();
-            ResultSet result = statement.executeQuery(querykamar);
-            out.print("<html>");
-                   
-            out.print("<body>");
-            out.print("<form method = 'GET'>");
-            out.print("<center> <h1> KAMAR ARIA ROOM AND SWIMMING POOL </h1> <table border=3>");
-            out.print("<tr>");
-            out.print("<td>ID Kamar</td>");
-            out.print("<td>Tipe Kamar</td>");
-            out.print("<td>Harga Kamar</td>");
-            out.print("<td>Jumlah Kamar</td>");
-            out.print("</tr>");
-            while (result.next()) {
-                out.print("<tr>");
-                out.print("<td>" + result.getString(1)+ "</td>");
-                out.print("<td>" + result.getString(2) + "</td>");
-                out.print("<td>" + result.getString(3) + "</td>");
-                out.print("<td>" + result.getString(4) + "</td>");
-                out.print("<td><a href=updateKamar_?idKamar='"+result.getString(1)+"'>Update</td>");
-                //out.print("<td><input type = 'submit' value = 'update' formaction = 'updateKamar_'></td>");
-                out.print("<td><a href=hapusKamar?idKamar='"+result.getString(1)+"'>Hapus</td>");
-                out.print("</tr>");
 
-            }
-            out.print("</table><br>");
-            out.print("<a href = 'admin.jsp'>Kembali</center>");
-            out.print("<a href = 'tambahKamar.jsp'>Tambah Kamar");
-            out.print("</form>");
-            out.print("</body>");
-            out.print("</html>");
-        } catch (SQLException e) {
-            out.print("Message :" + e.getMessage());
+        try {
+            response.setContentType("text/html");
+            DataBaseConnection connect = new DataBaseConnection();
+//            Connection conn = connect.getConnection();
+//            PrintWriter out = response.getWriter();
+
+            String idKamar = request.getParameter("idProduk");
+            String tipeKamar = request.getParameter("tipeKamar");
+            String hargaKamar = request.getParameter("hargaKamar");
+            String jumlahKamar = request.getParameter("jumlahKamar");
+            System.out.println(jumlahKamar);
+//           conn = new DatabaseConnection();
+            String sql = "UPDATE `kamar` SET `tipeKamar`='" + tipeKamar + "',`hargaKamar`='" + hargaKamar + "',`jumlahKamar`='" + jumlahKamar + "' WHERE idKamar LIKE '" + idKamar + "'";
+            Statement statement = connect.getConnection().createStatement();
+            statement.executeUpdate(sql);
+            response.sendRedirect("showKamar1");
+        } catch (SQLException ex) {
+            Logger.getLogger(update.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

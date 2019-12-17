@@ -39,7 +39,7 @@ public class fungsiUpdateKamar extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet fungsiUpdateKamar</title>");            
+            out.println("<title>Servlet fungsiUpdateKamar</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet fungsiUpdateKamar at " + request.getContextPath() + "</h1>");
@@ -61,25 +61,28 @@ public class fungsiUpdateKamar extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-        DataBaseConnection connect = new DataBaseConnection();
-        Connection conn = connect.getConnection();
         PrintWriter out = response.getWriter();
+        DataBaseConnection connect = new DataBaseConnection();
+        Connection conn = connect.getConnection();;
         
-        String idKamar = request.getParameter("idProduk");
+
+        String idKamar = request.getParameter("idKamar");
         String tipeKamar = request.getParameter("tipeKamar");
         String hargaKamar = request.getParameter("hargaKamar");
         String jumlahKamar = request.getParameter("jumlahKamar");
-        
+
+        System.out.println(jumlahKamar+idKamar+jumlahKamar);
         try {
             PreparedStatement update = conn.prepareStatement("update kamar set tipeKamar=?, hargaKamar=?, jumlahKamar=? where idKamar=?");
+            
             update.setString(1, tipeKamar);
             update.setString(2, hargaKamar);
             update.setString(3, jumlahKamar);
             update.setString(4, idKamar);
-            
-            update.executeUpdate();
+            update.execute();
+            System.out.println("masuk");
             response.sendRedirect("showKamar1");
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             out.println(ex.getMessage());
         }
     }

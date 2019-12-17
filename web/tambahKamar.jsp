@@ -105,6 +105,13 @@
                                 </div>
 
                             </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label class="text-black font-weight-bold" for="jumlah">JUMLAH KAMAR</label>
+                                    <input type="text" id="harga" name="jumlahKamar" class="form-control">
+                                </div>
+
+                            </div>
 
 
                             <div class="row">
